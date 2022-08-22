@@ -35,8 +35,10 @@ displayProducts1: db에서 타입이 1인 상품들 뿌려봤어요
 
 
 header: 맨 위 헤더
+
 managerMenu: 관리자 메뉴
 
+---------------------------------
 NewFile: 의미없는 파일 무시해도 됨
 
 modify: 잘못 넣었어요 무시하세요
