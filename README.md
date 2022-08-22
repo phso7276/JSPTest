@@ -7,11 +7,10 @@
 
 오른쪽마우스>build path>libraries> external jar 로 webTest lib에 있는 jar 모두 추가하기
 
-
-<중요>
-
 <br/>
-showProducts 부분을 시작페이지 삼아서 서버 연결하기!!
-각 페이지에서 데이터베이스 연결할때 id는 webmaster가 아닌 shopmaster로 로그인 한 뒤 아이피 주소 변경해야함!!!!!!
+<중요>
+<br/>
+**showProducts 부분을 시작페이지 삼아서 서버 연결하기!!
+각 페이지에서 데이터베이스 연결할때 id는 webmaster가 아닌 shopmaster로 로그인 한 뒤 아이피 주소 변경해야함!!!!!!**
 
 ***데이터베이스는 webdev에서 변경하지 말기 (원본 db 보호차원)***
