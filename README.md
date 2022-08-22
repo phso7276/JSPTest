@@ -32,7 +32,8 @@ deleteProduct:상품 삭제
 
 displayProducts1: db에서 타입이 1인 상품들 뿌려봤어요
 
-
+-------------------
+<html영역>
 
 header: 맨 위 헤더
 
