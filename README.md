@@ -18,10 +18,15 @@
 ![image](https://user-images.githubusercontent.com/76393035/185850365-f3d4ec61-df23-4865-a122-96fee3aefa2f.png)
 
 showProducts : db 상품 목록 페이지 (메인)
+
 addProduct: 새로운 상품 추가하는 페이지
+
 addProductProcess: db에 새상품 추가하는 과정
+
 editProduct: 상품 정보 수정
+
 modify_proc: db에 수정 정보 반영하기
+
 deleteProduct:상품 삭제
 
 
@@ -33,4 +38,5 @@ header: 맨 위 헤더
 managerMenu: 관리자 메뉴
 
 NewFile: 의미없는 파일 무시해도 됨
+
 modify: 잘못 넣었어요 무시하세요
