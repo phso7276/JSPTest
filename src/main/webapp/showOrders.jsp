@@ -15,33 +15,22 @@
 
 } */
 
- function goDelete(){
 
-     if (!confirm("정말 삭제하시겠습니까?")) {
-         alert("삭제 취소");
-     }
-     else {
-    	 alert("삭제");	
-
-    	 document.deleteForm.action ='deleteProduct.jsp';
-    	document.deleteForm.submit();
-     }
-	 
-
- }
 
 </script>
 
 
-<title>상품 목록</title>
+<title>주문 목록</title>
 
 <style>
 body { display:flex;
  flex-direction: column;
   align-items: center;}
 
-td{text-align: center;}
+td{text-align: center;
 
+padding:0 20px;
+}
 
 </style>
 
@@ -61,20 +50,25 @@ td{text-align: center;}
 
 	<jsp:include page="header.jsp"/>
 		<jsp:include page="managerMenu.jsp"/>
-	<table class="productTable">
+	<table class="orderlistTable">
   		<tr>
-   			<th>품번</th>
-   			<th>상품명</th>
-   			<th>타입(1:튜브 2: 퍼퓸 3: 손소독제 4: 캔들)</th>
-   			<th>가격</th>
-   			<th>설명</th>
-   			<th>용량</th>
-   			<th>수량</th>
-   			<th>등록 / 삭제</th>
-   			<th>등록일</th>
-   			<th>이미지 주소</th>
-   			<th>상품 수정</th>
-   			<th>상품 삭제</th>
+   			<th>주문 번호</th>
+   			<th>주문자명</th>
+   			<th>회원 아이디</th>
+   			
+   			
+   			<th>상품 번호 : 상품명</th>
+   			
+   			<th>주문 수량</th>
+   			<th>배송상태</th>
+   			<th>총액</th>
+   			
+   			<th>우편번호</th>
+   			<th>주소</th>
+   			<th>전화번호</th>
+   			<th>주문일</th>
+   			
+
   		</tr>
 
  		<tbody>
@@ -84,7 +78,11 @@ td{text-align: center;}
  	String url = "jdbc:mariadb://127.0.0.1:3306/webdev";
 	String uid = "webmaster";
 	String pwd = "1234";
-	String query = "SELECT * from product";
+	String query = "SELECT o.o_num,o.o_quan,o.o_result,o.o_date,o.u_id,o.o_total, p.p_num,p.p_name,u.u_address,u_name,u.zip_code, u.u_phone "+
+			"FROM order_list AS o,product AS p, user AS u "+
+			"WHERE o.p_num=p.p_num "+
+			"AND u.u_id = o.u_id "+
+			"order BY o_date;";
 	
 	Connection con = null;
     Statement stmt = null;
@@ -105,18 +103,21 @@ td{text-align: center;}
 			 
 %>
 <tr onMouseover="this.style.background='#46D2D2';" onmouseout="this.style.background='white';">
-  					<td><%=rs.getInt("p_num") %></td>
+  					<td><%=rs.getInt("o.o_num") %></td>
   					<td style="text-align:left;"><a id="hypertext" href="#" onMouseover='this.style.textDecoration="underline"'  
-  							onmouseout="this.style.textDecoration='none';"><%=rs.getString("p_name") %></a></td>
-  					<td><%=rs.getString("p_type") %></td>
-  					<td><%=rs.getString("p_price") %></td>
-  					<td><%=rs.getString("p_desc") %></td> 
-  						<td><%=rs.getString("p_spec") %></td>
-  						<td><%=rs.getInt("p_quan") %></td>
-  					<td><%=rs.getString("p_useyn") %></td> 
-  					<td><%=rs.getString("p_regdate") %></td> 
-  					<td><%=rs.getString("p_image") %></td> 
-  					<td>
+  							onmouseout="this.style.textDecoration='none';"><%=rs.getString("u.u_name") %></a></td>
+  					<td><%=rs.getString("o.u_id") %></td>
+  					<td><%=rs.getString("p.p_num") %> : <%=rs.getString("p.p_name") %> </td>
+  					<td><%=rs.getString("o.o_quan") %></td> 
+  					<td><%=rs.getString("o.o_result") %></td> 
+  					<td><%=rs.getString("o.o_total") %></td> 
+  						<td><%=rs.getString("u.zip_code") %></td>
+  						<td><%=rs.getString("u.u_address") %></td>
+  					<td><%=rs.getString("u.u_phone") %></td>
+  					<td><%=rs.getString("o.o_date") %></td> 
+  				
+  					
+  					<%-- <td>
   						<form name="editForm"  action="editProduct.jsp" method="post">
   						    <input type="hidden" name="btn_edit" value="<%=rs.getInt("p_num") %>">
   							<input type="submit" value="edit">
@@ -127,7 +128,7 @@ td{text-align: center;}
   					 <input type="hidden" id="btn_delete" name="btn_delete" value="<%=rs.getInt("p_num") %>">
   					<input type="submit" class="deleteProduct" value="delete">
   					</form>
-  					</td>
+  					</td> --%>
   					
   						
  				</tr>

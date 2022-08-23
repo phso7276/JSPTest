@@ -81,14 +81,24 @@ display:flex;
  flex-direction: column;
   align-items: center;
 }
+
+.center{
+padding-top: 30px;
+
+}
+
+.form-group, .form-control{
+padding:10px;
+}
 </style>
 </head>
 <body>
 <div>
 	<div>
-		<h1 class="display-3">상품 등록</h1>
+			<jsp:include page="header.jsp"/>
+		<jsp:include page="managerMenu.jsp"/>
 	</div>
-	<div>
+	<div class="center">
 		<form name="productForm" id="productForm" class="productForm" method="post">
 			<div class="form-group row">
 				<label class="col-sm-2">상품명</label>
@@ -96,43 +106,43 @@ display:flex;
 					<input type="text" name="name" class="form-control">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<label class="col-sm-2">타입(1:튜브핸드 2: 퍼퓸핸드 3: 손소독제 4:올팩티브 캔들)</label>
 				<div class="col-sm-3">
 					<input type="text" name="type" class="form-control">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<label class="col-sm-2">가격</label>
 				<div class="col-sm-3">
 					<input type="text" name="price" class="form-control">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<label class="col-sm-2">설명</label>
 				<div class="col-sm-3">
 					<input type="text" name="desc" class="form-control">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<label class="col-sm-2">용량</label>
 				<div class="col-sm-3">
 					<input type="text" name="spec" class="form-control">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<label class="col-sm-2">이미지 주소</label>
 				<div class="col-sm-3">
 					<input type="text" name="image_src" class="form-control">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<label class="col-sm-2">수량</label>
 				<div class="col-sm-3">
 					<input type="text" name="quan" class="form-control" value="20">
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
 				<div class="col-offset-2">
 				<input type="button" id="btn_newProduct" class="addProduct_btn" value="상품 등록" onclick="addProductCheck()"> 
 				<input type="button" id="btn_cancelProduct" class="cancelProduct_btn" value="취소" onclick="cancelProductCheck()"> 

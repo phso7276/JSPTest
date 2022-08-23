@@ -161,7 +161,7 @@ input, textarea{
     int p_num =0;
     String p_name = "";
     String p_type = "";
-    String p_price = "";
+    int p_price = 0;
     String p_desc = "";
     String p_spec = "";
     String p_image = "";
@@ -180,10 +180,9 @@ input, textarea{
 			p_num= rs.getInt("p_num");
 			p_name = rs.getString("p_name");
 			p_type = rs.getString("p_type");
-			p_price= rs.getString("p_price");
+			p_price= rs.getInt("p_price");
 			p_desc = rs.getString("p_desc");
 			p_spec = rs.getString("p_spec");
-			p_price= rs.getString("p_price");
 			p_image = rs.getString("p_image");
 			p_quan= rs.getInt("p_quan");
 			

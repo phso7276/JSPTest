@@ -109,7 +109,6 @@ text-decoration:none;
 
 
 	<h1>상품 목록 보기</h1>
-		<jsp:include page="managerMenu.jsp"/>
 <div class="prd-list">
  				
 <%  
@@ -146,7 +145,7 @@ text-decoration:none;
  <!-- 이름,가격,설명 -->
  	<div class="prd-list_desc"><%=rs.getString("p_desc") %></div>
  	<div class="prd-list_name"><%=rs.getString("p_name") %></div>
- 	<div class="prd-list_price"><%=rs.getString("p_price") %></div>
+ 	<div class="prd-list_price"><%=rs.getInt("p_price") %></div>
  </div>
  </a>
  </div>
