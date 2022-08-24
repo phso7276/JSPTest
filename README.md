@@ -15,9 +15,21 @@
 
 ***데이터베이스는 shop_db 말고 webdev사용하기 (원본 db 보호차원)***
 
-![image](https://user-images.githubusercontent.com/76393035/185850365-f3d4ec61-df23-4865-a122-96fee3aefa2f.png)
+![image](https://user-images.githubusercontent.com/76393035/186285592-89612812-2210-4220-88b9-8b062952ab23.png)
 
-showProducts : db 상품 목록 페이지 (메인)
+login: 로그인 페이지(메인)
+
+loginCheck: 로그인 유효성 검사
+
+logout: 로그아웃, 세션 종료
+
+welcome: 로그인 후 화면
+
+showUsers: 회원 목록 보기
+
+showOrders: 주문 목록 보기
+
+showProducts : db 상품 목록 페이지 
 
 addProduct: 새로운 상품 추가하는 페이지
 
@@ -39,7 +51,4 @@ header: 맨 위 헤더
 
 managerMenu: 관리자 메뉴
 
----------------------------------
-NewFile: 의미없는 파일 무시해도 됨
 
-modify: 잘못 넣었어요 무시하세요
