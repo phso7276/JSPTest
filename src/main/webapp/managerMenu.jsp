@@ -35,9 +35,10 @@
     
    
 	<div class="top_menu">
-		<a class="manage_menu" href="showProducts.jsp">상품 수정 / 삭제</a>
+		<a class="manage_menu" href="showProducts.jsp">상품 목록(추가/삭제)</a>
 		<a class="manage_menu" href="addProduct.jsp">상품 추가</a>
 		<a class="manage_menu" href="showUsers.jsp">회원 목록</a>
 		<a class="manage_menu" href="showOrders.jsp">주문 목록</a>
+		<a class="manage_menu" href="jsp/welcome.jsp">홈페이지</a>
 	</div>
 	</body>

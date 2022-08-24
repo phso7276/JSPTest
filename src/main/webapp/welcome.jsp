@@ -27,23 +27,19 @@ padding-top:50px;
 </head>
 <body class ="page">
 <jsp:include page="header.jsp"/>
+<jsp:include page="managerMenu.jsp"/>
 <%
 
 	String userid = (String)session.getAttribute("userid");
-	String managerid = (String)session.getAttribute("managerid");
-	String person = null;
 
-	if(userid == null && managerid==null) response.sendRedirect("index.jsp");
-	else if (userid != null){
-		person = userid;%>
-		<div class="welcome">회원 전용 페이지 입니다.</div>
-		<% 
-	}
-	else if (managerid != null){
-		person =managerid;%>
-		<jsp:include page="managerMenu.jsp"/>
+
+	if(userid == null) response.sendRedirect("index.jsp");
+	else if (userid != null){%>
+	
 		<div class="welcome">관리자 전용 페이지 입니다.</div>
-<% }%>	
+<%
+	}
+%>	
 	
 
 

@@ -6,30 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <head>
+<link rel="stylesheet" type="text/css" href="css/show.css" />
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<script>
-/* function goEdit(){
-	alert("수정(아니오)");
-	document.location.href = 'editProduct.jsp';
-	document.editForm.submit();
-
-} */
-
-
-
-</script>
-
 
 <title>회원 목록</title>
-
-<style>
-body { display:flex;
- flex-direction: column;
-  align-items: center;}
-
-td{text-align: center;}
-
-</style>
 
 </head>
 
@@ -92,8 +72,7 @@ td{text-align: center;}
 %>
 <tr onMouseover="this.style.background='#46D2D2';" onmouseout="this.style.background='white';">
   					<td><%=rs.getRow() %></td>
-  					<td style="text-align:left;"><a id="hypertext" href="#" onMouseover='this.style.textDecoration="underline"'  
-  							onmouseout="this.style.textDecoration='none';"><%=rs.getString("u_name") %></a></td>
+  					<td style="text-align:left;"><%=rs.getString("u_name") %></td>
   					<td><%=rs.getString("u_id") %></td>
   					<td><%=rs.getString("u_pw") %></td>
   					<td><%=rs.getString("u_email") %></td> 
@@ -134,8 +113,7 @@ td{text-align: center;}
 	
 
 	</table>
-	<br>
-<br><br>	
+		
 
 
 </div>

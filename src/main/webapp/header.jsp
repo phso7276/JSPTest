@@ -50,16 +50,14 @@ ol, ul {
 	String log = "로그인";
 	String link = "login.jsp";
 	String hidden = "none";
-	String managerid = (String)session.getAttribute("managerid");
+
 	String userid = (String)session.getAttribute("userid");
 
-	if(managerid !=null ||userid !=null) {
+	if(userid !=null) {
 		log = "로그아웃";
 		link = "logout.jsp";
-		
-		if(managerid != null) {
-			hidden ="active";
-		}
+		hidden ="active";
+	
 		} 
 	
 	

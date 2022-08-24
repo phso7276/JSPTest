@@ -76,17 +76,7 @@ String sql3 */
 		if(con != null) con.close(); 
 
 
-
-
-						
-%>			
-			<script>
-				
-				alert("상품등록 완료.");
-				document.location.href='showProducts.jsp';
-				
-			</script>	
-<% 	
+ 	
 }catch(Exception e){
 		e.printStackTrace();
 	}

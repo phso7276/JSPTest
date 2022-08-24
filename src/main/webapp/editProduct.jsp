@@ -7,19 +7,9 @@
 <meta charset="UTF-8">
 <head>
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<script>
-
-
-</script>
-
-
+<link rel="stylesheet" type="text/css" href="css/editProduct.css" />
 <title>상품 수정</title>
 
-<style>
-body { font-family: "나눔고딕", "맑은고딕" }
-
-
-</style>
 
 </head>
 
@@ -43,105 +33,16 @@ function registerForm(){
 	if($("#spec").val()=='') { alert("용량을 입력하세요!!!");  $("#spec").focus(); return false;  }
 	if($("#desc").val()=='') { alert("설명을 입력하세요!!!");  $("#mcontent").focus(); return false;  }
 	
+	
 	$("#editForm").attr("action", "modify_proc.jsp").submit();
 	
 	alert("수정 완료");
 	
 }
 
+
 </script>
 
-<style>
-body { font-family: "나눔고딕", "맑은고딕"
-		  display: flex;
-  flex-direction: column;
-  align-items: center;
- }
-
-a:link { color: black; }
-a:visited { color: black; }
-a:hover { color: red; }
-a:active { color: red; }
-#hypertext { text-decoration-line: none; cursor: hand; }
-
-.center{ display:flex;
-  align-items: center;
-
-  }
-  
-.editForm{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding:50px;
-}
-
-.image-display{
-  width: 30%;
-  height: 30%;
-  padding:0px 50px 50px 50px;
-  
-  }
-
-input, textarea{
-	padding: 5px;
-	margin:10px;
-}
-
-.list{display: flex;
-
-  align-items: center;}
-
-
-#mcontent{
-  width: 850px;
-  height: 300px;
-  padding: 10px;
-  box-sizing: border-box;
-  border: solid #adadad;
-  font-size: 16px;
-  resize: both;
-}
-
-.btn_write  {
-  position:relative;
-  left:20%;
-  transform: translateX(-50%);
-  margin-top: 20px;
-  margin-bottom: 10px;
-  width:40%;
-  height:40px;
-  background: red;
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-}
-
-.btn_cancel{
-  position:relative;
-  left:20%;
-  transform: translateX(-50%);
-  margin-top: 20px;
-  margin-bottom: 10px;
-  width:40%;
-  height:40px;
-  background: pink;
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-}
-
-</style>
 
 </head>   
 <body>
@@ -210,7 +111,7 @@ input, textarea{
 	
 	<img src="<%=p_image%>" class="image-display" alt="이미지" />
 	
-	<form id="editForm" class="editForm" method="POST">
+	<form id="editForm" class="editForm" name="editForm" method="POST">
 	<div class="list">
 	<label class="col-sm-2">품번</label>
 			<input type="text" name="num" id="num" value="<%=p_num %>" readonly>
@@ -225,7 +126,7 @@ input, textarea{
 		</div>
 		<div class="list">
 	<label class="col-sm-2">가격</label>
-		<input type="text" name="price" id="price" value="<%=p_price%>">
+		<input type="text" name="price" id="price" value="<%=p_price%>" >
 		</div>
 		<div class="list">
 	<label class="col-sm-2">설명</label>

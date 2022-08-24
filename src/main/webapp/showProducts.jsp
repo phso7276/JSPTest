@@ -6,8 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <head>
+<link rel="stylesheet" type="text/css" href="css/show.css" />
+<link rel="stylesheet" type="text/css" href="css/tooltip.css" />
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<script>
+<script type="text/javascript">
 /* function goEdit(){
 	alert("수정(아니오)");
 	document.location.href = 'editProduct.jsp';
@@ -16,35 +18,21 @@
 } */
 
  function goDelete(){
-
-     if (!confirm("정말 삭제하시겠습니까?")) {
-         alert("삭제 취소");
-     }
-     else {
-    	 alert("삭제");	
-
-    	 document.deleteForm.action ='deleteProduct.jsp';
-    	document.deleteForm.submit();
-     }
-	 
-
+		var form = confirm("삭제하시겠습니까?");
+		if(form ==true){
+			
+			console.log("삭제함");
+			 document.deleteForm.action ='deleteProduct.jsp';
+		    document.deleteForm.submit();
+		}
+		else{
+			System.out.println("삭제 안 함");
+			
+		}
+    	
  }
-
 </script>
-
-
 <title>상품 목록</title>
-
-<style>
-body { display:flex;
- flex-direction: column;
-  align-items: center;}
-
-td{text-align: center;}
-
-
-</style>
-
 </head>
 
  <%
@@ -106,8 +94,7 @@ td{text-align: center;}
 %>
 <tr onMouseover="this.style.background='#46D2D2';" onmouseout="this.style.background='white';">
   					<td><%=rs.getInt("p_num") %></td>
-  					<td style="text-align:left;"><a id="hypertext" href="#" onMouseover='this.style.textDecoration="underline"'  
-  							onmouseout="this.style.textDecoration='none';"><%=rs.getString("p_name") %></a></td>
+  					<td style="text-align:left;"><%=rs.getString("p_name") %></td>
   					<td><%=rs.getString("p_type") %></td>
   					<td><%=rs.getString("p_price") %></td>
   					<td><%=rs.getString("p_desc") %></td> 
@@ -115,7 +102,11 @@ td{text-align: center;}
   						<td><%=rs.getInt("p_quan") %></td>
   					<td><%=rs.getString("p_useyn") %></td> 
   					<td><%=rs.getString("p_regdate") %></td> 
-  					<td><%=rs.getString("p_image") %></td> 
+  					<td><span class="tooltip"><%=rs.getString("p_image") %>
+  					<span class="tooltip-img">
+  						<img class="t-img" src="<%=rs.getString("p_image") %>"/>
+  					</span>
+  					</span></td> 
   					<td>
   						<form name="editForm"  action="editProduct.jsp" method="post">
   						    <input type="hidden" name="btn_edit" value="<%=rs.getInt("p_num") %>">
@@ -123,9 +114,9 @@ td{text-align: center;}
   						</form>
   						</td>
   					<td>
-  					<form name="deleteForm" action="deleteProduct.jsp" method="get">
+  					<form name="deleteForm" action="deleteProduct.jsp"  method="post">
   					 <input type="hidden" id="btn_delete" name="btn_delete" value="<%=rs.getInt("p_num") %>">
-  					<input type="submit" class="deleteProduct" value="delete">
+  					<input type="submit" class="deleteProduct" value="delete"  >
   					</form>
   					</td>
   					
@@ -147,8 +138,7 @@ td{text-align: center;}
 	
 
 	</table>
-	<br>
-<br><br>	
+
 
 
 </div>

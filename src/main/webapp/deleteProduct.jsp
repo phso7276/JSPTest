@@ -13,7 +13,7 @@
 <meta charset="utf-8">
 <title>delete product</title>
 </head>
-<script>
+<script type="script/javascript">
 function alertForm(){
 	if (confirm("정말 삭제하시겠습니까?")) {
 	    alert("삭제 취소");
@@ -25,11 +25,9 @@ function alertForm(){
 }
 </script>
 <body>
-<script>alertForm();</script>
-
 <%
  
-
+out.println("<script>alert('저장되셨습니다');</script>");
 	request.setCharacterEncoding("utf-8");
 
 String p_num = request.getParameter("btn_delete");

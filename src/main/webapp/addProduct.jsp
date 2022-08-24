@@ -4,24 +4,7 @@
 <html>
 <head>
 <script>
-/*
-	$(document).ready(function(){
-		
-		$("#btn_login").click(function(){
 
-			if($("#userid").val() =='') {
-				alert("아이디를 입력하세요");
-				return false;
-			}
-			if($("#password").val() =='') {
-				alert("패스워드를 입력하세요");
-				return false;
-			}
-			$("#loginForm").attr("action","loginCheck.jsp").submit();
-		});
-		
-	});
-*/
 
 function addProductCheck(){
 		
@@ -75,22 +58,7 @@ function press(){
 </script>
 <meta charset="utf-8">
 <title>상품 등록</title>
-<style>
-body{
-display:flex;
- flex-direction: column;
-  align-items: center;
-}
-
-.center{
-padding-top: 30px;
-
-}
-
-.form-group, .form-control{
-padding:10px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/addProduct.css" />
 </head>
 <body>
 <div>

@@ -35,16 +35,20 @@
 	Statement stmt2 = null;
 	Statement stmt3 = null;
 	Statement stmt4 = null;
+	Statement stmt5 = null;
 	ResultSet rs1 = null;
 	ResultSet rs2 = null;
 	ResultSet rs3 = null;
 	ResultSet rs4 = null;
+	ResultSet rs5 = null;
 	
 	
 	int u_id_cnt = 0;
 	int u_pw_cnt = 0;
 	int m_id_cnt = 0;
 	int m_pw_cnt = 0;
+	
+	String u_role = null;
 	
 	//LocalDateTime now = LocalDateTime.now();
 	//String lastlogindate = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));	
@@ -56,12 +60,8 @@
 	String query2 = "SELECT count(*) as u_id_count from user " 
 			+ "WHERE u_id='" + id + "' and "
 			+ "u_pw='"+pw+"';";
-			
-	String query3 = "select count(*) as m_id_count from manager where m_id= '" + id + "';";		
-	String query4 = "SELECT count(*) as m_id_count from manager " 
-			+ "WHERE m_id='" + id + "' and "
-			+ "m_pw='"+pw+"';";
-			
+	String query5 = "select role from user where u_id= '" + id + "';";
+
 	//마지막 접속 시간 등록
 /* 	String query3 = "update tbl_test set lastlogindate = '" + lastlogindate 
 			      + "' where userid = '" + userid + "'";
@@ -75,92 +75,54 @@
 				
 		stmt1 = con.createStatement();
 		stmt2 = con.createStatement();
-		
-		stmt3 = con.createStatement();
-		stmt4 = con.createStatement();
+
+		stmt5 = con.createStatement();
 		
 		System.out.println(id);
 		System.out.println(pw);
 		
 		rs1 = stmt1.executeQuery(query1);
 		rs2 = stmt2.executeQuery(query2);
+
+		rs5 = stmt5.executeQuery(query5);
 		
-		rs3 = stmt3.executeQuery(query3);
-		rs4 = stmt4.executeQuery(query4);
 		
 		while(rs1.next()) u_id_cnt = rs1.getInt("u_id_count");
 		while(rs2.next()) u_pw_cnt = rs2.getInt("u_id_count");
 		
-		while(rs3.next()) m_id_cnt = rs3.getInt("m_id_count");
-		while(rs4.next()) m_pw_cnt = rs4.getInt("m_id_count");
-		
-		System.out.println(u_pw_cnt);
-		
-		
-		//manager 계정
-		if(m_id_cnt != 0 && m_pw_cnt !=0){
-			session.setMaxInactiveInterval(3600*7); //세션 유지 기간 설정
-			session.setAttribute("managerid", id); //세션 생성
-			
-			
-		
-			stmt3.close();
-			stmt4.close(); 
-			rs3.close();
-			rs4.close();
-			con.close();
-			%>	
-			<script>
-				
-				alert("로그인.");
-				document.location.href='welcome.jsp';
-				
-			</script>
-			
-	<% 		
-			Locale locale = request.getLocale();
-			
-			String lang = locale.getLanguage();
-			System.out.println("로그인 언어 :" + lang);
-			
-			response.sendRedirect("welcome.jsp");
-		}
-		
+
+
 		
 		//아이디가 존재하고 패스워드도 틀리지 않은 user계정
 		if(u_id_cnt != 0 && u_pw_cnt !=0){
+			while(rs5.next()){u_role = rs5.getString("role"); System.out.println("role:"+u_role);}
 			
 			session.setMaxInactiveInterval(3600*7); //세션 유지 기간 설정
 			session.setAttribute("userid", id); //세션 생성
-			
-	/* 		stmt3 = con.createStatement();
-			stmt3.executeUpdate(query3);
-			
-			stmt4 = con.createStatement();
-			stmt4.executeUpdate(query4);
-						 */
+
 			stmt1.close();
 			stmt2.close();
-/* 			stmt3.close();
-			stmt4.close(); */
+			stmt5.close();
 			rs1.close();
 			rs2.close();
+			rs5.close();
 			con.close();
 			%>	
-			<script>
-				
-				alert("로그인.");
-				document.location.href='welcome.jsp';
-				
-			</script>
+
 			
 	<% 		
 			Locale locale = request.getLocale();
 			
 			String lang = locale.getLanguage();
 			System.out.println("로그인 언어 :" + lang);
+			if(u_role.equals("user")){
+				response.sendRedirect("jsp/welcome.jsp");
+			}
+			else if (u_role.equals("manager")){
+				response.sendRedirect("welcome.jsp");
+			}
+				
 			
-			response.sendRedirect("welcome.jsp");
 			
 		} else if(u_id_cnt == 0 || m_id_cnt ==0){ //아이디가 존재하지 않는 사용자
 

@@ -6,33 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <head>
+<link rel="stylesheet" type="text/css" href="css/show.css" />
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<script>
-/* function goEdit(){
-	alert("수정(아니오)");
-	document.location.href = 'editProduct.jsp';
-	document.editForm.submit();
-
-} */
-
-
-
-</script>
-
 
 <title>주문 목록</title>
-
-<style>
-body { display:flex;
- flex-direction: column;
-  align-items: center;}
-
-td{text-align: center;
-
-padding:0 20px;
-}
-
-</style>
 
 </head>
 
@@ -45,13 +22,15 @@ padding:0 20px;
 %>	
 
 <body>
-
 <div class="tableDiv">
 
 	<jsp:include page="header.jsp"/>
 		<jsp:include page="managerMenu.jsp"/>
+		
+		<form name="selectForm" class="seletForm" action="deliveryStatus.jsp" method="post">
 	<table class="orderlistTable">
   		<tr>
+  		<th></th>
    			<th>주문 번호</th>
    			<th>주문자명</th>
    			<th>회원 아이디</th>
@@ -67,6 +46,7 @@ padding:0 20px;
    			<th>주소</th>
    			<th>전화번호</th>
    			<th>주문일</th>
+   		
    			
 
   		</tr>
@@ -88,8 +68,8 @@ padding:0 20px;
     Statement stmt = null;
     ResultSet rs = null;
     
-
-        
+    String color=null;
+	        
 	try{
 	    
 		Class.forName("org.mariadb.jdbc.Driver");
@@ -99,41 +79,36 @@ padding:0 20px;
 		rs = stmt.executeQuery(query);
 		
 		while(rs.next()) {
+			
+			if(rs.getString("o.o_result").equals("배송완료")){
+				color= "red";
+			}
+			else if(rs.getString("o.o_result").equals("배송중")){
+				color= "blue";
+			}
+			else{
+				color="black";
+			}
 		
 			 
 %>
 <tr onMouseover="this.style.background='#46D2D2';" onmouseout="this.style.background='white';">
+					<td><input type="checkbox" name="checknum" value="<%=rs.getInt("o.o_num") %>" /></td>
   					<td><%=rs.getInt("o.o_num") %></td>
-  					<td style="text-align:left;"><a id="hypertext" href="#" onMouseover='this.style.textDecoration="underline"'  
-  							onmouseout="this.style.textDecoration='none';"><%=rs.getString("u.u_name") %></a></td>
+  					<td style="text-align:left;"><%=rs.getString("u.u_name") %></td>
   					<td><%=rs.getString("o.u_id") %></td>
   					<td><%=rs.getString("p.p_num") %> : <%=rs.getString("p.p_name") %> </td>
   					<td><%=rs.getString("o.o_quan") %></td> 
-  					<td><%=rs.getString("o.o_result") %></td> 
+  					<td style="color:<%=color %>"><%=rs.getString("o.o_result") %></td> 
   					<td><%=rs.getString("o.o_total") %></td> 
+  					
   						<td><%=rs.getString("u.zip_code") %></td>
   						<td><%=rs.getString("u.u_address") %></td>
   					<td><%=rs.getString("u.u_phone") %></td>
-  					<td><%=rs.getString("o.o_date") %></td> 
-  				
-  					
-  					<%-- <td>
-  						<form name="editForm"  action="editProduct.jsp" method="post">
-  						    <input type="hidden" name="btn_edit" value="<%=rs.getInt("p_num") %>">
-  							<input type="submit" value="edit">
-  						</form>
-  						</td>
-  					<td>
-  					<form name="deleteForm" action="deleteProduct.jsp" method="get">
-  					 <input type="hidden" id="btn_delete" name="btn_delete" value="<%=rs.getInt("p_num") %>">
-  					<input type="submit" class="deleteProduct" value="delete">
-  					</form>
-  					</td> --%>
-  					
+  					<td><%=rs.getString("o.o_date") %></td> 					
   						
  				</tr>
- 						
-		</tbody>
+ 			
 <% 
 		}
 	}catch(Exception e)	 {
@@ -145,11 +120,26 @@ padding:0 20px;
 	con.close();
 	
 %>
-	
-
+		
+	</tbody>
 	</table>
-	<br>
-<br><br>	
+
+		<div class="select-list">
+		<div>
+		선택 항목의 배송 상태를 
+		<select name="status">
+		<option value="주문확인중">주문확인중</option>
+		<option value="배송전">배송전</option>
+		<option value="배송중">배송중</option>
+		<option value="배송완료">배송완료</option>
+		</select> (으)로 변경하기 
+		</div>
+		<div class="buttons">
+		<input type="submit" name="save_btn" value="저장" />
+		<input type="button" class="btn_cancel" value="취소" onclick="document.location.href='showOrders.jsp" />
+		</div>
+			</div>
+	</form>
 
 
 </div>
