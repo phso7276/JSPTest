@@ -41,14 +41,15 @@ modify_proc: db에 수정 정보 반영하기
 
 deleteProduct:상품 삭제
 
-
+-----------------
 JSP 폴더
-앞부분과 합친 것
+
+
 cart:장바구니에 추가 (버튼 누르면)
+
 showCarts: 장바구니에서 내가 담은 물건 
 
 
-displayProducts1: db에서 타입이 1인 상품들 뿌려봤어요
 
 -------------------
 <html영역>
