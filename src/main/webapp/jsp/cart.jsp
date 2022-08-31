@@ -1,79 +1,159 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%--
+  Created by IntelliJ IDEA.
+  User: iot29
+  Date: 2022-08-19
+  Time: 오후 6:56
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ page import="dao.ProductRepository"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%> --%>
+ --%>
+ --%>
+<%
+
+String display= "none";
+    String user_id = (String) session.getAttribute("userid");
+    System.out.println("장바구니 창 아이디: "+user_id);
+%>
 <html>
 <head>
-  <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <%
-    String cartId = session.getId();
-  %>
-  <title>장바구니</title>
-  	<script>location.href ="showCarts.jsp";</script>	
-</head>
-<body>
-<jsp:include page="menu.jsp" />
-<%@ include file="dbconn.jsp"%>
+<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<!--  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script>
+function orderCheck(){
+	alert('ordercheck');
+	if(($("#check_cnum:checked").length)==0){
+		
+	    System.out.println('체크 안 된 상태');
+	    alert('선택한 물건이 없습니다');
+		location.href='cart.jsp';
+	   
+	}else{
+		 console.log('체크된 상태');
+		    document.selectCartForm.action = 'address.jsp';
+			document.selectCartForm.submit(); 
 
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-3">장바구니</h1>
-  </div>
+	}
+
+	
+}
+
+function cancelCheck(){
+	 alert('선택한 물건이 없습니다');
+		location.href='cart.jsp';
+	
+/* 	document.selectCartForm.action = 'Main.jsp';
+	document.selectCartForm.submit(); */
+}
+
+
+</script>
+<style type="text/css">
+.my_box {
+      display: flex;
+    }
+</style>
+<meta charset="utf-8">
+  <title>장바구니</title>
+</head>
+
+<body>
+<%
+
+    String cartId = session.getId();
+%>
+<jsp:include page="header.jsp" />
+<%@ include file="dbconn.jsp"%>
+<%
+  int p_num =0;
+  int sum =0;  
+
+
+  request.setCharacterEncoding("utf-8");
+
+
+  String query = "select c.c_num, p.p_num,p.p_name,p.p_price,c.c_quan,c.c_order from product As p, cart AS c where c.p_num=p.p_num AND c.u_id = '" +user_id +"' ;";
+  System.out.println("[상세 보기 쿼리] : " + query);
+
+
+  Statement stmt = null;
+
+  stmt = conn.createStatement();
+  rs = stmt.executeQuery(query);
+
+
+%>
+<div >
+    <p style="height: 150px">장바구니</p>
 </div>
-<div class="container">
+<div class="my_box">
+<div>
+<jsp:include page="userCart.jsp" />
+</div>
+<div class="my_right">
   <div class="row">
-    <table width="100%">
+  
+  
+   <!--  <table width="100%">
       <tr>
-        <td align="left"><a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">삭제하기</a></td>
-        <td align="right"><a href="./shippingInfo.jsp?cartId=<%= cartId %>" class="btn btn-success">주문하기</a></td>
+     <td align="left"><a href="removeAllCartProcess.jsp" class="btn btn-danger">삭제하기</a></td>
+        <td align="right"><a href="./address.jsp" class="btn btn-success">주문하기</a></td>
       </tr>
-    </table>
+    </table> -->
   </div>
   <div style="padding-top: 50px">
+  		<form name="selectCartForm" class="selectCartForm">
     <table class="table table-hover">
       <tr>
+       <th></th>
         <th>상품</th>
         <th>가격</th>
         <th>수량</th>
         <th>소계</th>
-        <th>비고</th>
+
+          <th>비고</th>
       </tr>
-<%
-request.setCharacterEncoding("utf-8");
 
-//로그인 창에서 파리미터로 받은 값
-String userid = (String)session.getAttribute("userid");
-System.out.println(userid);
+      <%
+        while(rs.next()){
+      %>
+      <tr>
+      	<td><input type="checkbox" name="check_cnum" id="check_cnum" value="<%=rs.getInt("c.c_num") %>" /></td>
+        <td><%=rs.getString("p.p_name") %></td>
+        <td><%=rs.getInt("p.p_price") %></td>
+        <td><%=rs.getInt("c.c_quan") %></td>
+        <td><%=rs.getInt("p.p_price") * rs.getInt("c.c_quan") %></td>
 
-//DB에서 사용자 정보(아이디랑 패스워드 가져 오기)
 
+          <td><form name="deletecart" action="removeCartProcess.jsp" method="post" class="badge badge-danger">
+		     <input type="hidden" name="btn_dcart" value=" <%=rs.getString("c_num") %>">	
+            <input type="submit" value="삭제">
+        </form></td>
+      </tr>
+     <%
+     	 sum +=rs.getInt("p.p_price") * rs.getInt("c.c_quan");
+        }
+      %>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>총액</th>
+        <th>sum</th>
+        <th><%=sum %></th>
+      </tr>
+    </table>
+    
+    <a href="./Main.jsp" class="btn btn-secondary"> &laquo; 쇼핑 계속하기</a>
+ 	 <a  class="btn btn-success"><input name="order" type="submit" value="주문하기" onclick="orderCheck()"></a>
+	 <a  class="btn btn-success"><input name="delete" type="button" value="삭제하기" onclick="cancelCheck()" ></a>
+   </form>
 
-
-  String num = request.getParameter("p_num");
-  System.out.println("[p_num] : " + num);
-
-  String sql = "insert into cart (p_num, u_id,c_quan) values "
-			+ "('" + num + "', '" + userid+ "', '" + 1 + "')"; 
-  
-
-  try{
-
-				
-	  pstmt = conn.prepareStatement(sql);
-		pstmt.executeQuery();
-
-		
- 		if(pstmt != null) pstmt.close(); 
-		
-  }catch(Exception e){
-		e.printStackTrace();
-	}
-
-%>
-		
-
-		
-		
-
+  </div>
+  <hr>
+</div>
+</div>
+<jsp:include page="footer.jsp" />
 </body>
+
 </html>

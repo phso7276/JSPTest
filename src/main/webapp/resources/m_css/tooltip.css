@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+.tooltip{
+	padding:10px;
+}
+.tooltip-img {
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+
+
+}
+.t-img{
+ max-width: 420px;
+  max-height:auto;
+object-fit: cover; 
+     
+
+}
+
+.tooltip:hover .tooltip-img {
+  display: block;
+
+}

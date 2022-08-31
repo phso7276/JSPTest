@@ -33,13 +33,11 @@
 	
 	Statement stmt1 = null;
 	Statement stmt2 = null;
-	Statement stmt3 = null;
-	Statement stmt4 = null;
+
 	Statement stmt5 = null;
 	ResultSet rs1 = null;
 	ResultSet rs2 = null;
-	ResultSet rs3 = null;
-	ResultSet rs4 = null;
+
 	ResultSet rs5 = null;
 	
 	
@@ -131,11 +129,7 @@
 			rs1.close();
 			rs2.close();
 			
-			
-			stmt3.close();
-			stmt4.close(); 
-			rs3.close();
-			rs4.close();
+
 			
 			
 			con.close();
@@ -155,11 +149,6 @@
 			rs1.close();
 			rs2.close();
 			
-			
-			stmt3.close();
-			stmt4.close(); 
-			rs3.close();
-			rs4.close();
 			
 			
 			con.close();

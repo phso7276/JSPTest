@@ -112,7 +112,7 @@ display:flex;
 </head>
 <body>
 <div class="page">
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="../m_jsp/header.jsp"/>
 <div class="main" align="center">
 	<div class="login">
 		<h1>로그인</h1>

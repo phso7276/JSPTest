@@ -1,0 +1,40 @@
+.container{
+            width: 100%;
+            display: flex;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            overflow: auto;
+            font-weight: bold;
+        }
+
+
+        .jumbotron{
+            width: auto;
+            display: flex;
+            flex-direction: row;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: bold;
+            font-size: 30px;
+            text-indent: 13.5em;
+            overflow: auto;
+        }
+
+
+        .col-md-5 {
+            width: 50%;
+            display: flex;
+            float: left;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        .col-md-6{
+            width: 40%;
+            float: right;
+            padding: 20px;
+            overflow: auto;
+            position:relative;
+            font-weight: bold;
+            cursor:pointer;
+        }

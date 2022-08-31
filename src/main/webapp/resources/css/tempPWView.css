@@ -1,0 +1,48 @@
+ .home_body_div{
+    margin-top: 120px;
+    padding: 100px 0 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+} 
+
+.pwSearchForm{
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 6px;
+    background-color: #F6f5f0;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.3);
+    color: #555;
+} 
+
+ .pwSearchForm h1{
+    padding: 30px;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+} 
+
+.pwSearchForm h1 strong {
+    font-weight: 1000;
+    color: #006633;
+}
+
+.home_body_div form input{
+    width: 70%;
+    margin-bottom: 12px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.home_body_div form [type="button"] {
+    background-color: #006633;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}

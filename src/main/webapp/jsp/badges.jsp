@@ -1,12 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%--
+  Created by IntelliJ IDEA.
+  User: iot29
+  Date: 2022-08-22
+  Time: 오후 5:16
+  To change this template use File | Settings | File Templates.
+--%>
 
-</body>
-</html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ko">
 <head>

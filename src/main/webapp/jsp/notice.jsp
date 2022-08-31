@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: iot29
+  Date: 2022-08-23
+  Time: 오전 9:25
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ko">
 <head>
@@ -67,16 +74,10 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <a href="javascript:void(0)">크리스마스 & 연말연시 스타벅스 매장 영업시간 변경 안내</a>
+                            <a href="javascript:void(0)">[당첨자 발표] 탬버린즈 인스타그램 구매인증 이벤트</a>
                         </div>
                         <div class="swiper-slide">
-                            <a href="javascript:void(0)">[당첨자 발표] 2021 스타벅스 플래너 영수증 이벤트</a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="javascript:void(0)">스타벅스커피 코리아 애플리케이션 버전 업데이트 안내</a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="javascript:void(0)">[당첨자 발표] 뉴이어 전자영수증 이벤트</a>
+                            <a href="javascript:void(0)"> 탬버린즈 크리스마스 매장 이벤트 안내</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +87,7 @@
             </div>
 
             <div class="inner__right">
-                <h2>스타벅스 프로모션</h2>
+                <h2>tamburins</h2>
                 <div class="toggle-promotion open">
                     <div class="material-icons">upload</div>
                 </div>
@@ -101,24 +102,13 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="../resources/images/promotion_slide1.jpg" alt="2021 뉴이어, 스타벅스와 함께 즐겁고 활기차게 시작하세요!" />
-                    <a href="javascript:void(0)" class="btn">자세히 보기</a>
+                    <img src="../resources/images/daydream_main_01_f.png" style="width: 830; height:600" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="../resources/images/promotion_slide2.jpg" alt="기간 내 스타벅스 카드 e-Gift를 3만원 이상 선물 시, 아메리카노 e-쿠폰을 드립니다." />
-                    <a href="javascript:void(0)" class="btn">자세히 보기</a>
+                    <img src="../resources/images/daydream_main_02_f.png" style="width: 830; height:600"/>
                 </div>
                 <div class="swiper-slide">
-                    <img src="../resources/images/promotion_slide3.jpg" alt="뉴이어 푸드와 제조 음료를 세트로 구매 시, 뉴이어 음료 BOGO(1+1) 쿠폰을 드립니다." />
-                    <a href="javascript:void(0)" class="btn">자세히 보기</a>
-                </div>
-                <div class="swiper-slide">
-                    <img src="../resources/images/promotion_slide4.jpg" alt="신년 MD 상품 포함 3만원 이상 구매 고객께 아메리카노(톨사이즈) 쿠폰을 드립니다." />
-                    <a href="javascript:void(0)" class="btn">자세히 보기</a>
-                </div>
-                <div class="swiper-slide">
-                    <img src="../resources/images/promotion_slide5.jpg" alt="2017 DIGITAL LUCKY DRAW 100% 당첨의 행운을 드립니다!" />
-                    <a href="javascript:void(0)" class="btn">자세히 보기</a>
+                    <img src="../resources/images/daydream_main_new_03_f.jpg" style="width: 830; height:600"/>
                 </div>
             </div>
         </div>

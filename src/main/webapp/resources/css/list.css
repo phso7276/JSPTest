@@ -1,0 +1,65 @@
+body { font-family: "Serif"}
+h1 { font-family: "Serif" }
+a:link { color: black; }
+a:visited { color: black; }
+a:hover { color: white; }
+a:active { color: #f6f5f0; }
+#hypertext { text-decoration-line: none; cursor: hand; }
+
+.tableDiv {
+	padding-top: 160px;
+	text-align: center;
+
+}
+
+.InfoTable {
+      border-collapse: collapse;
+      border-top: 3px solid black;
+      width: 800px;  
+      margin-left: auto; margin-right: auto;
+    }  
+    .InfoTable th {
+      color: black;
+      background: #f6f5f0;
+      text-align: center;
+    }
+    .InfoTable th, .InfoTable td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .InfoTable th:first-child, .InfoTable td:first-child {
+      border-left: 0;
+    }
+    .InfoTable th:last-child, .InfoTable td:last-child {
+      border-right: 0;
+    }
+    .InfoTable tr td:first-child{
+      text-align: center;
+    }
+    .InfoTable caption{caption-side: top; }
+
+.bottom_menu { 
+
+	margin-top: 20px;
+	padding-bottom:75px;
+	 }
+
+.bottom_menu > a:link, .bottom_menu > a:visited {
+			background-color: #f6f5f0;
+			/* border: 3px solid black; */
+			border-radius: 10px;
+			padding: 15px 25px;
+			color: black;
+			font-size: 15px;
+			font-weight: bold;
+			text-align: center;	
+			display: inline-block;
+			text-decoration: blink;
+			cursor:pointer;
+			
+}
+.bottom_menu > a:hover, .bottom_menu > a:active { 
+	background-color: #e8e8e6;
+	color: black;
+	text-decoration : none; 
+}
